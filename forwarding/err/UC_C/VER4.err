@@ -1,0 +1,13 @@
+src/UC_C.cpp: In instantiation of ‘C<T>::C(U&&) [with U = Awrap; <template-parameter-2-2> = void; T = const A&]’:
+src/UC_C.cpp:54:29:   required from here
+src/UC_C.cpp:22:37: error: no matching function for call to ‘forward(const A)’
+             C(U&& u) : t_(forward<T>(std::move(u).get())) {}
+                                     ^
+In file included from src/UC_C.cpp:3:0:
+./include/implementation.hpp:83:5: note: candidate: template<class T, class U, class> T&& impl::forward(U&&)
+     forward(U&& u){
+     ^
+./include/implementation.hpp:83:5: note:   template argument deduction/substitution failed:
+./include/implementation.hpp:74:14: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+              class = typename std::enable_if<
+              ^

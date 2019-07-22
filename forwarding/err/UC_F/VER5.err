@@ -1,0 +1,13 @@
+src/UC_F.cpp: In instantiation of ‘C<T>::C(C<U>&) [with U = A&; <template-parameter-2-2> = void; T = B&]’:
+src/UC_F.cpp:88:16:   required from here
+src/UC_F.cpp:34:44: error: no matching function for call to ‘forward(A&)’
+                  C(C<U>& c) : t_(forward<T>(c.t_)) {}
+                                            ^
+In file included from src/UC_F.cpp:5:0:
+./include/implementation.hpp:104:6: note: candidate: template<class T, class U, class> T&& impl::forward(U&&)
+      forward(U&& u){
+      ^
+./include/implementation.hpp:104:6: note:   template argument deduction/substitution failed:
+./include/implementation.hpp:96:14: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+              class = typename std::enable_if<
+              ^

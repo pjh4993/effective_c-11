@@ -1,0 +1,13 @@
+src/UC_E.cpp: In instantiation of ‘Derived<T>::Derived(Derived<T>&&) [with T = int]’:
+src/UC_E.cpp:34:33:   required from here
+src/UC_E.cpp:29:46: error: no matching function for call to ‘forward(Derived<int>&)’
+     Derived(Derived&& d) : C<T>(forward<C<T>>(d)){}
+                                              ^
+In file included from src/UC_E.cpp:2:0:
+./include/implementation.hpp:83:5: note: candidate: template<class T, class U, class> T&& impl::forward(U&&)
+     forward(U&& u){
+     ^
+./include/implementation.hpp:83:5: note:   template argument deduction/substitution failed:
+./include/implementation.hpp:74:14: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+              class = typename std::enable_if<
+              ^

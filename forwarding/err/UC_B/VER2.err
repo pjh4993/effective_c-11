@@ -1,0 +1,14 @@
+src/UC_B.cpp: In instantiation of ‘C<T>::C(U&&) [with U = Awrap; <template-parameter-2-2> = void; T = A]’:
+src/UC_B.cpp:64:22:   required from here
+src/UC_B.cpp:26:42: error: no matching function for call to ‘forward(A)’
+                  C(U&& u) : t_(forward<T>(std::move(u).get())) {}
+                                          ^
+In file included from src/UC_B.cpp:3:0:
+./include/implementation.hpp:41:22: note: candidate: template<class T, class U> typename std::enable_if<((std::is_lvalue_reference<_Arg>::value && (! std::is_rvalue_reference< <template-parameter-1-1> >::value)) && std::is_same<T&, U&>::value), T&&>::type impl::forward(U&&)
+         , T&&>::type forward(U&& a){
+                      ^
+./include/implementation.hpp:41:22: note:   template argument deduction/substitution failed:
+./include/implementation.hpp: In substitution of ‘template<class T, class U> typename std::enable_if<((std::is_lvalue_reference<_Arg>::value && (! std::is_rvalue_reference< <template-parameter-1-1> >::value)) && std::is_same<T&, U&>::value), T&&>::type impl::forward(U&&) [with T = A; U = A]’:
+src/UC_B.cpp:26:42:   required from ‘C<T>::C(U&&) [with U = Awrap; <template-parameter-2-2> = void; T = A]’
+src/UC_B.cpp:64:22:   required from here
+./include/implementation.hpp:41:22: error: no type named ‘type’ in ‘struct std::enable_if<false, A&&>’

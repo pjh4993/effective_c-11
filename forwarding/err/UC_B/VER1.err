@@ -1,0 +1,9 @@
+src/UC_B.cpp: In instantiation of ‘C<T>::C(U&&) [with U = Awrap; <template-parameter-2-2> = void; T = A]’:
+src/UC_B.cpp:64:22:   required from here
+src/UC_B.cpp:26:42: error: invalid initialization of non-const reference of type ‘A&’ from an rvalue of type ‘A’
+                  C(U&& u) : t_(forward<T>(std::move(u).get())) {}
+                                          ^
+In file included from src/UC_B.cpp:3:0:
+./include/implementation.hpp:25:13: note:   initializing argument 1 of ‘T&& impl::forward(U&) [with T = A; U = A]’
+         T&& forward(U& u){
+             ^
